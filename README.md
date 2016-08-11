@@ -21,14 +21,9 @@ _Author [Marcos Tomatti](https://github.com/chefguevara/RoboticaJS)_
     `$ sudo chmod a+rw /dev/ttyACM0`
     Where <username> is your user name in Ubuntu, /dev/ttyACM0 is the detected device of your Arduino board.
 
-<!--/* 3. Configure your app:
-    - using example file: conf/app.conf.example.json
-    - create conf/app.conf.json and edit secret, appid, etc */-->
-
-
-<!--## Testing _(pending)_
-
-Running `npm test` will run the unit tests with karma.-->
+### Discussions
+Slack: [&#35;robotica-js](https://vpartners.slack.com/archives/robotica-js)
+Issues: [Git](https://github.com/chefguevara/RoboticaJS/issues)
 
 ## License
 Copyright (c) 2016 Marcos Tomatti <mtomatti@velocitypartners.net>
