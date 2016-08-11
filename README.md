@@ -26,6 +26,13 @@ Where <username> is your user name in Ubuntu, /dev/ttyACM0 is the detected devic
 - Slack: [&#35;robotica-js](https://vpartners.slack.com/archives/robotica-js)
 - Issues: [Git](https://github.com/chefguevara/RoboticaJS/issues)
 
+## Contributing
+1. Branch out from master.
+2. Commit and push your changes at will.
+3. Once you are happy with your code create a Pull request to get your code reviewed. Tagging is very welcomed.  
+4. If you've got enough approvals, we can merge your branch to master. 
+5. Profit!
+
 ## License
 Copyright (c) 2016 Marcos Tomatti <mtomatti@velocitypartners.net>
 Licensed under the MIT license.
