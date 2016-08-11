@@ -23,8 +23,8 @@ _Author [Marcos Tomatti](https://github.com/chefguevara/RoboticaJS)_
 Where <username> is your user name in Ubuntu, /dev/ttyACM0 is the detected device of your Arduino board.
 
 ### Discussions
-Slack: [&#35;robotica-js](https://vpartners.slack.com/archives/robotica-js)
-Issues: [Git](https://github.com/chefguevara/RoboticaJS/issues)
+- Slack: [&#35;robotica-js](https://vpartners.slack.com/archives/robotica-js)
+- Issues: [Git](https://github.com/chefguevara/RoboticaJS/issues)
 
 ## License
 Copyright (c) 2016 Marcos Tomatti <mtomatti@velocitypartners.net>
