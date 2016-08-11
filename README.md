@@ -17,13 +17,14 @@ _Author [Marcos Tomatti](https://github.com/chefguevara/RoboticaJS)_
 1. Run `npm install` to install server dependencies.
 
 2. Run the following lines (linux only):
-    `$ sudo usermod -a -G dialout <username>`
-    `$ sudo chmod a+rw /dev/ttyACM0`
-    Where <username> is your user name in Ubuntu, /dev/ttyACM0 is the detected device of your Arduino board.
+    - `$ sudo usermod -a -G dialout <username>`
+    - `$ sudo chmod a+rw /dev/ttyACM0`
+    
+Where <username> is your user name in Ubuntu, /dev/ttyACM0 is the detected device of your Arduino board.
 
 ### Discussions
-Slack: [&#35;robotica-js](https://vpartners.slack.com/archives/robotica-js)
-Issues: [Git](https://github.com/chefguevara/RoboticaJS/issues)
+- Slack: [&#35;robotica-js](https://vpartners.slack.com/archives/robotica-js)
+- Issues: [Git](https://github.com/chefguevara/RoboticaJS/issues)
 
 ## License
 Copyright (c) 2016 Marcos Tomatti <mtomatti@velocitypartners.net>
