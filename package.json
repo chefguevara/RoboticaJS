@@ -1,0 +1,33 @@
+{
+  "name": "RoboticaJS-intro",
+  "version": "0.1.0",
+  "description": "Node app para la intro del workshop RoboticaJS",
+  "main": "index.js",
+  "dependencies": {
+    "babel-core": "^5.8.35",
+    "babel-runtime": "^5.8.20",
+    "johnny-five": "^0.9.26",
+    "lodash": "^4.6.1",
+    "moment": "^2.11.2"
+  },
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chefguevara/RoboticaJS.git"
+  },
+  "keywords": [
+    "Bot",
+    "JS",
+    "javascript",
+    "johnny-five",
+    "iot"
+  ],
+  "author": "Marcos Tomatti <mtomatti@velocitypartners.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chefguevara/RoboticaJS/issues"
+  },
+  "homepage": "https://github.com/chefguevara/RoboticaJS#readme"
+}
