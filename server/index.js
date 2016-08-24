@@ -5,17 +5,24 @@ import settings  from './settings';
 
 let app = express(),
     server = http.createServer(app),
-    io = Socket.listen(server);
+    io = Socket.listen(server),
+    clients = {};
 
 io.sockets
     .on('connection', (socket) => {
+        clients[socket.id] = socket;
         console.log(`${socket.id} connected.`);
         socket.on('data', (data) => {
-            console.log(`Temperature of ${data} received from ${socket.id}`);
+            let client = clients[data.target];
+            console.log(`Temperature of ${data.value} received from ${socket.id} to ${data.target}`);
+            client.emit('data', data);
         });
         socket.on('disconnect', (reason) => {
             console.log(`${socket.id} discconect. ${reason}`);
+            delete clients[socket.id];
+            io.sockets.emit('update-clients', Object.keys(clients));
         });
+        io.sockets.emit('update-clients', Object.keys(clients));
         socket.emit('ready');
     });
 
