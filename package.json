@@ -1,14 +1,25 @@
 {
   "name": "RoboticaJS-intro",
-  "version": "0.1.0",
-  "description": "Node app para la intro del workshop RoboticaJS",
+  "version": "0.3.0",
+  "description": "Node app del workshop de RoboticaJS",
   "main": "index.js",
   "dependencies": {
     "babel-core": "^5.8.35",
     "babel-runtime": "^5.8.20",
+    "express": "^4.13.4",
+    "express-jwt": "^3.0.0",
     "johnny-five": "^0.9.26",
+    "jsonwebtoken": "^5.7.0",
     "lodash": "^4.6.1",
-    "moment": "^2.11.2"
+    "moment": "^2.11.2",
+    "prompt": "^1.0.0",
+    "request": "^2.69.0",
+    "require": "^2.4.20",
+    "serve-favicon": "^2.3.0",
+    "serve-static": "^1.10.2",
+    "socket.io": "^1.4.5",
+    "socket.io-client": "^1.3.5",
+    "socketio-jwt": "^4.3.4"
   },
   "scripts": {
     "test": "karma start"
