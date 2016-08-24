@@ -1,10 +1,11 @@
 import socketIo  from 'socket.io-client';
 import prompt from 'prompt';
-import settings  from '../server/settings';
 
-let io = socketIo.connect(`http://${settings.host}:${settings.port}`);
+let host = process.argv[2] || '127.0.0.1',
+    port = process.argv[3] || 24772,
+    io = socketIo.connect(`http://${host}:${port}`);
 
-let doPrompt = () => {
+    let doPrompt = () => {
     let schema = {
         properties: {
             temperature: {
@@ -25,7 +26,7 @@ let doPrompt = () => {
 
 
 io.on('connect', () => {
-   console.log(`Connected to ${settings.host}`);
+   console.log(`Connected to ${host}`);
 }).on('ready', () => {
     doPrompt();
 });
