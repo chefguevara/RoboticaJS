@@ -39,25 +39,11 @@ let actions = {
 
 board.on("ready", () => {
 
-    let photoresistor = new five.Sensor({
-        pin: "A5",
-        freq: 250
-    });
-
     let piezoBuzzer = new five.Piezo({
-        pin: 3
+        pin: 8
     });
 
-    photoresistor.on("change", function() {
 
-        if (this.value < 20) {
-            console.log(this.value);
-            actions.playSong(piezoBuzzer);
-        }
-    });
-
-    board.repl.inject({
-        pot: photoresistor
-    });
+    actions.playSong(piezoBuzzer);
 
 });

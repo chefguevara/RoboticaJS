@@ -8,7 +8,29 @@ let host = process.argv[2] || '192.168.30.120',
     port = process.argv[3] || 24772,
     io ,
     clients = [],
-    photoresistor;
+    piezoBuzzer ;
+
+let actions = {
+
+    playSong: (buzzer) => {
+        console.log('playing song');
+
+        buzzer.play({
+
+        // song is composed by an array of pairs of notes and beats
+        // The first argument is the note (null means "no note")
+        // The second argument is the length of time (beat) of the note (or non-note)
+        song: [
+            ["C4", 1 / 4]
+            
+           
+        ],
+        tempo: 100
+    });
+    }
+};
+
+
 
 let doPrompt = () => {
         let promptQuestions = [
@@ -40,14 +62,8 @@ let doPrompt = () => {
 board.on("ready", () => {
 
     io  = socketIo.connect(`http://${host}:${port}`);
-     photoresistor = new five.Sensor({
-        pin: "A0",
-        freq: 250
-    });
-
-    
-    board.repl.inject({
-        pot: photoresistor
+    piezoBuzzer = new five.Piezo({
+        pin: 8
     });
 
     io.on('connect', () => {
@@ -57,11 +73,9 @@ board.on("ready", () => {
     }).on('ready', () => {
         doPrompt();
     }).on('data', (data) => {
-        console.log(data);
+           console.log(data.value);
+           if (data.value == 1)
+            actions.playSong(piezoBuzzer);
     });
 
 });
-
-
-
-
