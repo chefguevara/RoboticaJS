@@ -2,11 +2,11 @@ import five from 'johnny-five';
 
 let board = new five.Board();
 
-board.on("ready", () => {
+board.on('ready', () => {
 
-    let eyes  = new five.IR.Reflect.Array({
+    let eyes = new five.IR.Reflect.Array({
         emitter: 3,
-        pins: ["A3"],
+        pins: ['A3'],
         freq: 25
     });
 

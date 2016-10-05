@@ -4,7 +4,7 @@ let board = new five.Board();
 
 board.on('ready', () => {
 
-    let block  = new five.Sensor.Digital(3);
+    let block = new five.Sensor.Digital(3);
 
     block.on('change', () => {
         //if (block.value === 1) {
