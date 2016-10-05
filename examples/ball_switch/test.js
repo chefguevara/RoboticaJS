@@ -4,9 +4,9 @@ let board = new five.Board();
 
 board.on('ready', () => {
 
-    let ball_switch  = new five.Sensor.Digital(3);
+    let ballSwitch = new five.Sensor.Digital(3);
 
-    ball_switch.on('change', () => {
+    ballSwitch.on('change', () => {
         console.log('my ball is shaking!!!');
     });
 });

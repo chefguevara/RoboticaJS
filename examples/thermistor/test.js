@@ -2,29 +2,6 @@ import five from 'johnny-five';
 
 let board = new five.Board();
 
-board.on('ready', () => {
-
-    let thermistor = new five.Sensor({
-            pin: 'A0',
-            freq: 1000
-        }),
-        average = 0,
-        count = 0;
-
-    thermistor.on('data', (data) => {
-        if (count < 5) {
-            average += data;
-            count++;
-        } else {
-            voltToTemp(average/5);
-            count = 0;
-            average = 0;
-        }
-
-    });
-
-});
-
 function voltToTemp(resistance) {
     let tempC;
     const thermistorOhm = 10000,
@@ -47,3 +24,26 @@ function voltToTemp(resistance) {
 
     console.log(`Temperature: ${parseFloat(tempC.toFixed(2))}`);
 }
+
+board.on('ready', () => {
+
+    let thermistor = new five.Sensor({
+            pin: 'A0',
+            freq: 1000
+        }),
+        average = 0,
+        count = 0;
+
+    thermistor.on('data', (data) => {
+        if (count < 5) {
+            average += data;
+            count++;
+        } else {
+            voltToTemp(average/5);
+            count = 0;
+            average = 0;
+        }
+
+    });
+
+});

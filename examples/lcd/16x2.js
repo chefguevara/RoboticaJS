@@ -4,7 +4,7 @@ let board, lcd;
 
 board = new five.Board();
 
-board.on('ready', function() {
+board.on('ready', function onReady() {
 
     lcd = new five.LCD({
         // LCD pin name  RS  EN  DB4 DB5 DB6 DB7
@@ -35,7 +35,7 @@ board.on('ready', function() {
     // can now be written as:
     lcd.print('I :heart: johnny-five');
 
-    this.wait(3000, function() {
+    this.wait(3000, function wait3sec() {
         lcd.clear().cursor(0, 0).print('I :check::heart: 2 :duck: :)');
     });
 

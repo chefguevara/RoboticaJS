@@ -9,7 +9,7 @@ board.on('ready', () => {
         pins: ['A0', 'A1']
     });
 
-    joystick.on('change', function () {
+    joystick.on('change', function change() {
         console.log('Joystick');
         console.log('  x : ', this.x);
         console.log('  y : ', this.y);

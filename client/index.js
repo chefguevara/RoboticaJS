@@ -1,18 +1,20 @@
-import socketIo  from 'socket.io-client';
+import socketIo from 'socket.io-client';
 import inquirer from 'inquirer';
 
 let host = process.argv[2] || '127.0.0.1',
     port = process.argv[3] || 24772,
     io = socketIo.connect(`http://${host}:${port}`),
-    clients = [];
+    clients = [],
+    doPrompt,
+    updateClients;
 
-let doPrompt = () => {
+doPrompt = () => {
     let promptQuestions = [
         {
             type: 'list',
             name: 'target',
             message: 'select a client from the list',
-            choices: clients,
+            choices: clients
         },
         {
             type: 'input',
@@ -31,14 +33,14 @@ let doPrompt = () => {
     });
 };
 
-let updateClients = (updatedClients) => {
-    clients = updatedClients;
+updateClients = (updatedList) => {
+    clients = updatedList;
 };
 
 io.on('connect', () => {
-   console.log(`Connected to ${host}`);
-}).on('update-clients', (clients) => {
-    updateClients(clients);
+    console.log(`Connected to ${host}`);
+}).on('update-clients', (updatedList) => {
+    updateClients(updatedList);
 }).on('ready', () => {
     doPrompt();
 }).on('data', (data) => {

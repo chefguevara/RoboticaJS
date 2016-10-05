@@ -9,7 +9,7 @@ board.on('ready', () => {
         freq: 250
     });
 
-    photoresistor.on('change', function() {
+    photoresistor.on('change', function onChange() {
         console.log(this.value);
     });
 
@@ -17,7 +17,7 @@ board.on('ready', () => {
         pot: photoresistor
     });
 
-    photoresistor.on('data', function() {
+    photoresistor.on('data', function onData() {
         console.log(this.value);
     });
 

@@ -5,12 +5,12 @@ let board = new five.Board();
 board.on('ready', () => {
 
     let sensor = new five.Sensor({
-        pin: 'A0',
+        pin: 'A0'
         //freq: 250,
         //threshold: 5
     });
 
-    sensor.on('change', function() {
+    sensor.on('change', function onChange() {
         console.log(this.value);
     });
 });

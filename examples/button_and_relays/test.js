@@ -1,27 +1,25 @@
 import five from 'johnny-five';
 
-let board = newfive.Board();
+let board = new five.Board();
 
 board.on('ready', () => {
-  let button = new five.Button({
-    pin: 6, 
-    invert: true
-  });
+    let button = new five.Button({
+            pin: 6,
+            invert: true
+        }),
+        relays = five.Relays([8, 9, 10, 11]);
 
-  let relays = five.Relays([8,9,10,11]);
+    button.on('hold', function onHold() {
+        console.log('Button held - Toogle Relay 2' );
+        relays[1].toggle();
+    });
 
-  button.on('hold', function() {
-    console.log('Button held - Toogle Relay 2' );
-    relays[1].toggle();
-  });
+    button.on('press', function onPress() {
+        console.log('Button pressed - Toogle Relay 1' );
+        relays[0].toggle();
+    });
 
-  button.on('press', function() {
-    console.log('Button pressed - Toogle Relay 1' );
-    relays[0].toggle();
-  });
-
-  button.on('release', function() {
-    console.log('Button released' );
-  });
-  
+    button.on('release', function onRelsase() {
+        console.log('Button released' );
+    });
 });
