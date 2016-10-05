@@ -2,11 +2,11 @@ import five from 'johnny-five';
 
 let board = new five.Board();
 
-board.on("ready", () => {
+board.on('ready', () => {
 
     let joystick = new five.Joystick({
         //   [ x, y ]
-        pins: ["A0", "A1"]
+        pins: ['A0', 'A1']
     });
 
     let relays = new five.Relays([2, 3, 4, 5]);
@@ -22,7 +22,7 @@ board.on("ready", () => {
     let deltaX = 0;
     let deltaY = 0;
 
-    joystick.on("change", function () {
+    joystick.on('change', function () {
         currentValX = this.x.toFixed(2);
         currentValY = this.y.toFixed(2);
 
@@ -48,10 +48,10 @@ board.on("ready", () => {
         }
 
         if(deltaX > 0.1 || deltaY > 0.1) {
-            console.log("Joystick");
-            console.log("  x : ", currentValX);
-            console.log("  y : ", currentValY);
-            console.log("--------------------------------------");  
+            console.log('Joystick');
+            console.log('  x : ', currentValX);
+            console.log('  y : ', currentValY);
+            console.log('--------------------------------------');
 
             lastValX = currentValX;
             lastValY = currentValY;  

@@ -2,7 +2,7 @@ import five from 'johnny-five';
 
 let board = new five.Board();
 
-board.on("ready", () => {
+board.on('ready', () => {
 
     let green_led  = new five.Led(10),
         red_led  = new five.Led(11),

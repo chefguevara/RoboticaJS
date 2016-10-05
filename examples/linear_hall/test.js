@@ -2,7 +2,7 @@ import five from 'johnny-five';
 
 let board = new five.Board();
 
-board.on("ready", () => {
+board.on('ready', () => {
 
     let hall  = new five.Sensor.Digital(3);
 
