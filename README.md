@@ -20,7 +20,7 @@ _Author [Marcos Tomatti](https://github.com/chefguevara/RoboticaJS)_
     - `$ sudo usermod -a -G dialout <username>`
     - `$ sudo chmod a+rw /dev/ttyACM0`
     
-Where &lt;username&gt; is your user name in Ubuntu, /dev/ttyACM0 is the detected device of your Arduino board.
+Where &lt;username&gt; is your user name in Ubuntu, /dev/ttyACM0 is the detected device of your Arduino board. You will need to log out and log in again for this change to take effect.
 
 ### Discussions
 - Slack: [&#35;robotica-js](https://vpartners.slack.com/archives/robotica-js)
