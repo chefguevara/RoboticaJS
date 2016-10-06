@@ -42,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/chefguevara/RoboticaJS/issues"
   },
-  "homepage": "https://github.com/chefguevara/RoboticaJS#readme"
+  "homepage": "https://github.com/chefguevara/RoboticaJS#readme",
+  "devDependencies": {
+    "keypress": "^0.2.1"
+  }
 }
