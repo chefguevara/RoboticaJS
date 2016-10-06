@@ -23,7 +23,7 @@ process.stdin.on('keypress', (ch, key) => {
                 console.log(`${combo}${key.name}`);
         }
     }
-    if (key && key.ctrl && key.name == 'c') {
+    if (key && key.ctrl && key.name === 'c') {
         process.stdin.pause();
     }
 });
