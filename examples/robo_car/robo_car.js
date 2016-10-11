@@ -6,24 +6,6 @@ let board = new five.Board(),
 
 console.log('start your engines!');
 
-
-function getSpeed({y}) {
-    return (y < 128) ?
-        {fwd: 255 - (y * 2)} :
-        {rev: ((y - 128) * 2)};
-}
-
-function getSteer({x}) {
-    let steer = (x < 128) ?
-    {left: 255 - (x * 2), right: 0} :
-    {left: 0, right: ((x - 128) * 2)};
-       // make something more sensible instead of return 0
-    return {
-        left: steer.right,
-        right: steer.left
-    };
-}
-
 board.on('ready', () => {
     const AXIS_0 = 'none',
         resetPosition = 128;
@@ -38,36 +20,122 @@ board.on('ready', () => {
                 new five.Motor(configs.M3)
             ]
         },
-        acceleration = {fwd: 0},
-        steer = {left: 0, right: 0};
+        direction = 'none',
+        steer = 'none';
 
     console.log('go!');
 
-    xbox.on('leftstickMove', (position) => {
-        acceleration = (position.y !== AXIS_0 || position.y !== resetPosition) ?
-            {fwd: 0} : getSpeed(position);
-    });
-    xbox.on('rightstickMove', (position) => {
-        steer = (position.x !== AXIS_0 || position.x !== resetPosition) ?
-        {left: 0, right: 0} : getSteer(position);
-    });
 
-    board.loop(100, () => {
-        let directionLeft = directionRight = Object.keys(acceleration),
-            speed = acceleration[direction];
-        if (steer.left !== 0 || steer.right !== 0) {
-            /*
-            if (steer.left > 0) {
-                motors.right[0][direction]
-                motors.right[1][direction]
-            }
-            */
-
+    function handleMotors(direction, steer) {
+        let dirLeft = (direction === 'none') ? 'fwd' : direction,
+            dirRight = (direction === 'none') ? 'fwd' : direction;
+        if (direction === 'none' && steer === 'none') {
+            motors.left[0].stop();
+            motors.left[1].stop();
+            motors.right[0].stop();
+            motors.right[1].stop();
+            return;
         }
-        motors.left[0][directionLeft](speed);
-        motors.left[1][directionLeft](speed);
-        motors.right[0][directionRight](speed);
-        motors.right[1][directionRight](speed);
 
+        console.log(direction, steer);
+        if (steer !== 'none') {
+            motors.left[0].stop();
+            motors.left[1].stop();
+            motors.right[0].stop();
+            motors.right[1].stop();
+
+            dirLeft = 'rev',
+            dirRight = 'fwd';
+            if (steer === 'right') {
+                dirLeft = 'fwd';
+                dirRight = 'rev';
+            }
+
+            if (direction === 'rev') {
+                let tmp = dirLeft;
+                dirLeft = dirRight;
+                dirRight = dirLeft;
+            }
+        }
+
+        console.log(`left: ${dirLeft} right: ${dirRight}`);
+        motors.left[0][dirLeft](255);
+        motors.left[1][dirLeft](255);
+        motors.right[0][dirRight](255);
+        motors.right[1][dirRight](255);
+    }
+
+    xbox.on('leftstickUp', () => {
+        //console.log('leftstickUp');
+        if(direction !== 'fwd') {
+            handleMotors('none', 'none');
+        }
+        direction = 'fwd';
+        handleMotors(direction, steer);
     });
+
+    xbox.on('leftstickUp:release', () => {
+        //console.log('leftstickUp:release');
+        if(direction !== 'none') {
+            handleMotors('none', 'none');
+        }
+        direction = 'none';
+        handleMotors(direction, 'none');
+    });
+
+    xbox.on('leftstickDown', () => {
+        //console.log('leftstickDown');
+        if(direction !== 'rev') {
+            handleMotors('none', 'none');
+        }
+        direction = 'rev';
+        handleMotors(direction, steer);
+    });
+
+    xbox.on('leftstickDown:release', () => {
+        //console.log('leftstickDown:release');
+        if(direction !== 'none') {
+            handleMotors('none', 'none');
+        }
+        direction = 'none';
+        handleMotors(direction, steer);
+    });
+
+
+    xbox.on('rightstickLeft', () => {
+        //console.log('rightstickLeft');
+        if(steer !== 'left') {
+            handleMotors('none', 'none');
+        }
+        steer = 'left';
+        handleMotors(direction, steer);
+    });
+
+    xbox.on('rightstickLeft:release', () => {
+        //console.log('rightstickLeft:release');
+        if(steer !== 'none') {
+            handleMotors('none', 'none');
+        }
+        steer = 'none';
+        handleMotors(direction, steer);
+    });
+
+    xbox.on('rightstickRight', () => {
+        //console.log('rightstickRight');
+        if(steer !== 'right') {
+            handleMotors('none', 'none');
+        }
+        steer = 'right';
+        handleMotors(direction, steer);
+    });
+
+    xbox.on('rightstickRight:release', () => {
+        //console.log('rightstickRight:release');
+        if(steer !== 'none') {
+            handleMotors('none', 'none');
+        }
+        steer = 'none';
+        handleMotors(direction, steer);
+    });
+
 });
