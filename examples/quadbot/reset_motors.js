@@ -19,7 +19,7 @@ board.on('ready', () => {
             address: 0x40,
             controller: 'PCA9685',
             range: [0, 180],
-            pin: 5,
+            pin: 8,
         });
     a.center();
     b.center();
