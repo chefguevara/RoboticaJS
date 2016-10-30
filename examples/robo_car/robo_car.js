@@ -54,7 +54,7 @@ board.on('ready', () => {
             if (direction === 'rev') {
                 let tmp = dirLeft;
                 dirLeft = dirRight;
-                dirRight = dirLeft;
+                dirRight = tmp;
             }
         }
 
