@@ -46,7 +46,7 @@ export default class SocketIO {
                 console.info('[%s] DISCONNECTED', socket.address);
             });
 
-            this.io.on('hi', (socket, data) => {
+            this.io.on('hi', (currentSocket, data) => {
                 console.log('said hi back');
                 console.log(data);
             });

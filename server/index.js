@@ -1,7 +1,7 @@
 import express from 'express';
 import http from 'http';
 import Socket from 'socket.io';
-import settings  from './settings';
+import settings from './settings';
 
 let app = express(),
     server = http.createServer(app),
@@ -14,7 +14,7 @@ io.sockets
         console.log(`${socket.id} connected.`);
         socket.on('data', (data) => {
             let client = clients[data.target];
-            console.log(`Temperature of ${data.value} received from ${socket.id} to ${data.target}`);
+            console.log(`Data received from ${socket.id} to ${data.target} with payload: [${data.value}]`);
             client.emit('data', data);
         });
         socket.on('disconnect', (reason) => {
