@@ -1,3 +1,7 @@
+## RGB LED
+
+
+```javascript
 import five from 'johnny-five';
 
 let board = new five.Board();
@@ -16,3 +20,6 @@ board.on('ready', () => {
         rgbLed.color(rainbow[i++]);
     });
 });
+```
+
+<img src="./rgb_led_bb.png">

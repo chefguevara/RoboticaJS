@@ -44,6 +44,7 @@
   },
   "homepage": "https://github.com/chefguevara/RoboticaJS#readme",
   "devDependencies": {
-    "keypress": "^0.2.1"
+    "keypress": "^0.2.1",
+    "xbox-controller-node": "^1.6.0"
   }
 }

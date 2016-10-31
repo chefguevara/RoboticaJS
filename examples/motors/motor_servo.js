@@ -51,18 +51,7 @@ board.on('ready', function onReady() {
     //
     // eg. array.step( -20 );
 
-    servo.sweep();
-    board.wait(10000, () => {
-        servo.stop();
-        servo.center();
-        setTimeout(() => {
-            servo.sweep({
-                range: [45, 135],
-                interval: 1000,
-                step: 10
-            });
-        }, 1000);
-
-    });
+//    servo.sweep();
+    servo.center();
 
 });
