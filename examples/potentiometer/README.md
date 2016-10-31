@@ -1,3 +1,7 @@
+## Double Potentiometer
+
+
+```javascript
 import five from 'johnny-five';
 
 let board = new five.Board();
@@ -20,3 +24,7 @@ board.on('ready', () => {
     });
 
 });
+
+```
+
+<img src="./rgb_switch.png">
