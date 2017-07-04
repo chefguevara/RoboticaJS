@@ -7,22 +7,46 @@ board.on('ready', () => {
     let a = new five.Servo({
             address: 0x40,
             controller: 'PCA9685',
-            pin: 0,
+            pin: 15,
         }),
         b = new five.Servo({
             address: 0x40,
+            controller: 'PCA9685',
+            range: [0, 180],
+            pin: 11,
+        }),
+        c = new five.Servo({
+            address: 0x40,
+            controller: 'PCA9685',
+            range: [0, 180],
+            pin: 7,
+        }),
+        d = new five.Servo({
+            address: 0x41,
+            controller: 'PCA9685',
+            pin: 0,
+        }),
+        e = new five.Servo({
+            address: 0x41,
             controller: 'PCA9685',
             range: [0, 180],
             pin: 4,
         }),
-        b = new five.Servo({
-            address: 0x40,
+        f = new five.Servo({
+            address: 0x41,
             controller: 'PCA9685',
             range: [0, 180],
-            pin: 5,
+            pin: 8,
         });
-    a.center();
-    b.center();
-    c.center();
 
+    setTimeout(() => {
+        a.center();
+        b.center();
+        c.center();
+    }, 1000);
+    setTimeout(() => {
+        d.center();
+        e.center();
+        f.center();
+    }, 2000);
 });
